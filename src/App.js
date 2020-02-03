@@ -6,13 +6,16 @@ import { PersistGate } from 'redux-persist/integration/react';
 import '~/config/ReactotronConfig';
 
 import history from '~/services/history';
+import Routes from '~/routes';
 import { store, persistor } from '~/store';
 
 function App() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <Router history={history} />
+        <Router history={history}>
+          <Routes />
+        </Router>
       </PersistGate>
     </Provider>
   );
