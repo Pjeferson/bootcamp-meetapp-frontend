@@ -1,7 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-// import { Container } from './styles';
+import logo from '~/assets/logo.svg';
 
 export default function SignUp() {
-  return <div />;
+  return (
+    <>
+      <img src={logo} alt="MeetApp" />
+      <form action="">
+        <input type="text" name="name" placeholder="Digite seu nome" />
+        <input type="email" name="email" placeholder="Seu e-mail" />
+        <input type="password" name="password" placeholder="Sua senha" />
+        <button type="submit">Criar conta</button>
+        <Link to="/">Já tenho login</Link>
+      </form>
+    </>
+  );
 }
