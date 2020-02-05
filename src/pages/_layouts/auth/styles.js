@@ -37,6 +37,13 @@ export const Content = styled.div`
       }
     }
 
+    span {
+      align-self: flex-start;
+      color: #d44059;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
     button {
       width: 100%;
       height: 50px;
