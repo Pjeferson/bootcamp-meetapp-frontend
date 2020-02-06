@@ -18,6 +18,23 @@ export function signInSuccess(user, token) {
   };
 }
 
+export function signUpRequest(name, email, password) {
+  return {
+    type: 'SIGN_UP_REQUEST',
+    payload: {
+      name,
+      email,
+      password,
+    },
+  };
+}
+
+export function signUpSuccess() {
+  return {
+    type: 'SIGN_UP_SUCCESS',
+  };
+}
+
 export function signFailure() {
   return {
     type: 'SIGN_FAILURE',

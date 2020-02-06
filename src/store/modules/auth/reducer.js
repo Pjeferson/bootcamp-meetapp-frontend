@@ -12,11 +12,20 @@ export default function auth(state = INITIAL_STATE, action) {
       case 'SIGN_IN_REQUEST':
         draft.loading = true;
         break;
+
       case 'SIGN_IN_SUCCESS':
         const { token } = action.payload;
         draft.loading = false;
         draft.signed = true;
         draft.token = token;
+        break;
+
+      case 'SIGN_UP_REQUEST':
+        draft.loading = true;
+        break;
+
+      case 'SIGN_UP_SUCCESS':
+        draft.loading = false;
         break;
 
       case 'SIGN_FAILURE':
