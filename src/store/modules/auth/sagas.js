@@ -10,6 +10,7 @@ export function* signIn({ payload }) {
     const response = yield call(api.post, '/sessions', { email, password });
     const { user, token } = response.data;
     yield put(signInSuccess(user, token));
+    api.defaults.headers.Authorization = `Bearer ${token}`;
   } catch (error) {
     yield put(signFailure());
   }
@@ -31,7 +32,15 @@ export function* signUp({ payload }) {
   }
 }
 
+function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+  api.defaults.headers.Authorization = `Bearer ${token}`;
+}
+
 export default all([
+  takeLatest('persist/REHYDRATE', setToken),
   takeLatest('SIGN_IN_REQUEST', signIn),
   takeLatest('SIGN_UP_REQUEST', signUp),
 ]);

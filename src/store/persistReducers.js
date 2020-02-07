@@ -6,7 +6,7 @@ export default reducers => {
     {
       key: 'meetapp',
       storage,
-      whitelist: [],
+      whitelist: ['auth'],
     },
     reducers
   );

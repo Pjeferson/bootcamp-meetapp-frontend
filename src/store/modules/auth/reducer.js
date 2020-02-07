@@ -14,10 +14,9 @@ export default function auth(state = INITIAL_STATE, action) {
         break;
 
       case 'SIGN_IN_SUCCESS':
-        const { token } = action.payload;
         draft.loading = false;
         draft.signed = true;
-        draft.token = token;
+        draft.token = action.payload.token;
         break;
 
       case 'SIGN_UP_REQUEST':
