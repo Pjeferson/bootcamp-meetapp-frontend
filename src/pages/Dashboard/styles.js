@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   max-width: 940px;
@@ -30,6 +31,10 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+
+      &:hover {
+        background: ${darken(0.03, '#f94d6a')};
+      }
 
       svg {
         margin-right: 10px;
