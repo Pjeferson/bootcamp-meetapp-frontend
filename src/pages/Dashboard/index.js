@@ -33,9 +33,11 @@ export default function Dashboard() {
               <strong>{meetup.title}</strong>
               <span>{meetup.dateFormatted}</span>
             </div>
-            <button type="button">
-              <MdChevronRight size={24} color="#fff" />
-            </button>
+            <Link to={`/meetups/${meetup.id}`}>
+              <button type="button">
+                <MdChevronRight size={24} color="#fff" />
+              </button>
+            </Link>
           </Appointment>
         ))}
       </ul>
