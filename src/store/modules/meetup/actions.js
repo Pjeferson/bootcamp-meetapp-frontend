@@ -56,3 +56,22 @@ export function editMeetupFailure() {
     type: '@meetup/EDIT_MEETUP_FAILURE',
   };
 }
+
+export function cancelMeetupRequest(id) {
+  return {
+    type: '@meetup/CANCEL_MEETUP_REQUEST',
+    payload: { id },
+  };
+}
+
+export function cancelMeetupSuccess() {
+  return {
+    type: '@meetup/CANCEL_MEETUP_SUCCESS',
+  };
+}
+
+export function cancelMeetupFailure() {
+  return {
+    type: '@meetup/CANCEL_MEETUP_FAILURE',
+  };
+}

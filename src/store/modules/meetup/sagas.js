@@ -12,6 +12,8 @@ import {
   createMeetupFailure,
   editMeetupSuccess,
   editMeetupFailure,
+  cancelMeetupSuccess,
+  cancelMeetupFailure,
 } from './actions';
 
 export function* loadMeetups() {
@@ -68,8 +70,20 @@ export function* editMeetup({ payload }) {
   }
 }
 
+export function* cancelMeetup({ payload }) {
+  try {
+    const response = yield call(api.delete, `/meetups/${payload.id}`);
+
+    yield put(cancelMeetupSuccess(response));
+    history.push('/dashboard');
+  } catch (error) {
+    yield put(cancelMeetupFailure());
+  }
+}
+
 export default all([
   takeLatest('@meetup/LOAD_MEETUPS_REQUEST', loadMeetups),
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
   takeLatest('@meetup/EDIT_MEETUP_REQUEST', editMeetup),
+  takeLatest('@meetup/CANCEL_MEETUP_REQUEST', cancelMeetup),
 ]);
