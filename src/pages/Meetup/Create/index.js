@@ -1,12 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Form, Input, Textarea } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
 
 import { Container } from './styles';
 import ImageInput from '../ImageInput';
+import { createMeetupRequest } from '~/store/modules/meetup/actions';
 
 export default function MeetupCreate() {
-  function handleSubmit(data) {}
+  const dispatch = useDispatch();
+
+  function handleSubmit(data) {
+    dispatch(createMeetupRequest(data));
+  }
 
   return (
     <Container>

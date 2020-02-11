@@ -37,6 +37,7 @@ export const Container = styled.div`
       flex-direction: column;
       align-items: center;
 
+      background: 0;
       color: #fff;
       font-size: 20px;
 
