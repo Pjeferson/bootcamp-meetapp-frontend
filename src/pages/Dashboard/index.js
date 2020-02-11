@@ -1,32 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
-import { format, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
 
 import { Container, Appointment } from './styles';
 
-import api from '~/services/api';
+import { loadMeetupsRequest } from '~/store/modules/meetup/actions';
 
 export default function Dashboard() {
-  const [meetups, setMeetups] = useState([]);
+  const dispatch = useDispatch();
+
+  const meetups = useSelector(state => state.meetup.meetups);
 
   useEffect(() => {
-    async function loadMeetups() {
-      const response = await api.get('/organizing');
-      const data = response.data.map(meetup => ({
-        ...meetup,
-        dateFormatted: format(
-          parseISO(meetup.date),
-          "d 'de' MMMM', às' HH'h'",
-          {
-            locale: pt,
-          }
-        ),
-      }));
-      setMeetups(data);
-    }
-    loadMeetups();
-  }, []);
+    dispatch(loadMeetupsRequest());
+  }, [dispatch]);
+
   return (
     <Container>
       <header>
