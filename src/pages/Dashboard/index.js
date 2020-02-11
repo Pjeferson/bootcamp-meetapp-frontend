@@ -20,10 +20,12 @@ export default function Dashboard() {
     <Container>
       <header>
         <h1>Meus meetups</h1>
-        <button type="button">
-          <MdAddCircleOutline color="#fff" size={20} />
-          Novo meetup
-        </button>
+        <Link to="/meetups/create">
+          <button type="button">
+            <MdAddCircleOutline color="#fff" size={20} />
+            Novo meetup
+          </button>
+        </Link>
       </header>
 
       <ul>
