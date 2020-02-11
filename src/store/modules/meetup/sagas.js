@@ -10,6 +10,8 @@ import {
   loadMeetupsFailure,
   createMeetupSuccess,
   createMeetupFailure,
+  editMeetupSuccess,
+  editMeetupFailure,
 } from './actions';
 
 export function* loadMeetups() {
@@ -47,7 +49,27 @@ export function* createMeetup({ payload }) {
   }
 }
 
+export function* editMeetup({ payload }) {
+  try {
+    const { file_id, title, description, date, location } = payload.data;
+
+    const response = yield call(api.put, `/meetups/${payload.id}`, {
+      file_id,
+      title,
+      description,
+      date,
+      location,
+    });
+
+    yield put(editMeetupSuccess(response));
+    history.push('/dashboard');
+  } catch (error) {
+    yield put(editMeetupFailure());
+  }
+}
+
 export default all([
   takeLatest('@meetup/LOAD_MEETUPS_REQUEST', loadMeetups),
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
+  takeLatest('@meetup/EDIT_MEETUP_REQUEST', editMeetup),
 ]);

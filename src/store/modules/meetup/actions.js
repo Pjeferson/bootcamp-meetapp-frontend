@@ -36,3 +36,23 @@ export function createMeetupFailure() {
     type: '@meetup/CREATE_MEETUP_FAILURE',
   };
 }
+
+export function editMeetupRequest(id, data) {
+  return {
+    type: '@meetup/EDIT_MEETUP_REQUEST',
+    payload: { id, data },
+  };
+}
+
+export function editMeetupSuccess(meetup) {
+  return {
+    type: '@meetup/EDIT_MEETUP_SUCCESS',
+    payload: { meetup },
+  };
+}
+
+export function editMeetupFailure() {
+  return {
+    type: '@meetup/EDIT_MEETUP_FAILURE',
+  };
+}
