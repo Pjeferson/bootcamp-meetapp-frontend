@@ -15,7 +15,7 @@ export default function Details({ match }) {
       <header>
         <h1>{meetup.title}</h1>
         <div>
-          <Link to={`/meetup/edit/${meetup.id}`}>
+          <Link to={`/meetups/${meetup.id}/edit`}>
             <ButtonEdit type="button">
               <MdEdit size={20} color="#fff" />
               Editar
