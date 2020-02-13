@@ -68,8 +68,10 @@ export function* editMeetup({ payload }) {
 
     yield put(editMeetupSuccess(response));
     history.push('/dashboard');
+    toast.success('Meetup salvo com sucesso!');
   } catch (error) {
     yield put(editMeetupFailure());
+    toast.error('Falha ao editar Meetup. Verifique os dados do mesmo.');
   }
 }
 
@@ -79,10 +81,10 @@ export function* cancelMeetup({ payload }) {
 
     yield put(cancelMeetupSuccess(response));
     history.push('/dashboard');
-    toast.success('Meetup salvo com sucesso!');
+    toast.success('Meetup cancelado com sucesso!');
   } catch (error) {
     yield put(cancelMeetupFailure());
-    toast.error('Falha ao editar Meetup. Verifique os dados do mesmo.');
+    toast.error('Você não pode cancelar este Meetup.');
   }
 }
 
