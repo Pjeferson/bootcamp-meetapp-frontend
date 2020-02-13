@@ -1,6 +1,7 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -46,8 +47,10 @@ export function* createMeetup({ payload }) {
 
     yield put(createMeetupSuccess(response));
     history.push('/dashboard');
+    toast.success('Meetup criado com sucesso!');
   } catch (error) {
     yield put(createMeetupFailure());
+    toast.error('Falha na criação do Meetup. Verifique os dados do mesmo.');
   }
 }
 
@@ -76,8 +79,10 @@ export function* cancelMeetup({ payload }) {
 
     yield put(cancelMeetupSuccess(response));
     history.push('/dashboard');
+    toast.success('Meetup salvo com sucesso!');
   } catch (error) {
     yield put(cancelMeetupFailure());
+    toast.error('Falha ao editar Meetup. Verifique os dados do mesmo.');
   }
 }
 
