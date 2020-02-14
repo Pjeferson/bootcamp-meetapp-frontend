@@ -40,6 +40,13 @@ export const Container = styled.div`
       }
     }
 
+    span {
+      align-self: flex-start;
+      color: #d44059;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
     button {
       margin-top: 10px;
       align-self: flex-end;
