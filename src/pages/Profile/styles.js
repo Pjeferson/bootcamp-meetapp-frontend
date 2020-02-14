@@ -31,6 +31,13 @@ export const Container = styled.div`
       }
     }
 
+    span {
+      align-self: flex-start;
+      color: #d44059;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
     button {
       align-self: flex-end;
       display: flex;
